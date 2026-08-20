@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://djwewioeynbpj"]
+
+[ext_resource type="Script" uid="uid://dg8bj33mi3gcr" path="res://scripts/game.gd" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://bmed41fkbopnt" path="res://scenes/hud.tscn" id="2_p57ef"]
+[ext_resource type="PackedScene" uid="uid://bkadht57160lf" path="res://scenes/paddle.tscn" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://bkgsgplmdrdk4" path="res://scenes/ball.tscn" id="3_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://mncx6o0d7l20" path="res://scenes/wall.tscn" id="4_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://dw1bevl5wjuyu" path="res://scenes/detector.tscn" id="5_iywne"]
+[ext_resource type="AudioStream" uid="uid://c16xc8wun50bu" path="res://assets/explosion.wav" id="6_u5sy4"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_ymh6p"]
+
+[node name="Game" type="Node2D" unique_id=249976959]
+script = ExtResource("1_uwrxv")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=634916504]
+
+[node name="HUD" parent="CanvasLayer" unique_id=1623025786 instance=ExtResource("2_p57ef")]
+
+[node name="StartDelay" type="Timer" parent="." unique_id=1658252370]
+one_shot = true
+
+[node name="Environment" type="Node" parent="." unique_id=880176701]
+
+[node name="Background" type="MeshInstance2D" parent="Environment" unique_id=951005534]
+modulate = Color(0, 0, 0, 1)
+z_index = -10
+position = Vector2(635.5, 359.5)
+scale = Vector2(1294.9999, 757)
+mesh = SubResource("QuadMesh_ymh6p")
+metadata/_edit_lock_ = true
+
+[node name="WallUp" parent="Environment" unique_id=973908103 instance=ExtResource("4_lbhrr")]
+position = Vector2(640, -10)
+
+[node name="WallDown" parent="Environment" unique_id=576425627 instance=ExtResource("4_lbhrr")]
+position = Vector2(640, 730)
+
+[node name="DetectorLeft" parent="Environment" unique_id=1376831131 instance=ExtResource("5_iywne")]
+position = Vector2(-10, 360)
+is_left = true
+
+[node name="DetectorRight" parent="Environment" unique_id=1636955453 instance=ExtResource("5_iywne")]
+position = Vector2(1290, 360)
+
+[node name="THEball" type="Node" parent="." unique_id=1355943513]
+
+[node name="Ball" parent="THEball" unique_id=308165637 instance=ExtResource("3_lnu2h")]
+position = Vector2(640, 360)
+
+[node name="BallMovementLine2D" type="Line2D" parent="THEball" unique_id=2006538270]
+visible = false
+width = 4.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="BallOutSound" type="AudioStreamPlayer2D" parent="THEball" unique_id=1292491643]
+position = Vector2(50, 360)
+stream = ExtResource("6_u5sy4")
+volume_db = -16.0
+
+[node name="Paddles" type="Node" parent="." unique_id=569220160]
+
+[node name="Paddle_1" parent="Paddles" unique_id=975441560 instance=ExtResource("2_yqjtg")]
+position = Vector2(50, 360)
+is_ai = true
+is_player_one = true
+
+[node name="Paddle_2" parent="Paddles" unique_id=1664826162 instance=ExtResource("2_yqjtg")]
+position = Vector2(1230, 360)
+
+[connection signal="one_player" from="CanvasLayer/HUD" to="." method="_on_hud_one_player"]
+[connection signal="restart" from="CanvasLayer/HUD" to="." method="_on_hud_restart"]
+[connection signal="two_player" from="CanvasLayer/HUD" to="." method="_on_hud_two_player"]

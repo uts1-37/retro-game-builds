@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bkgsgplmdrdk4"]
+
+[ext_resource type="Script" uid="uid://dbxjp6uylghs1" path="res://scripts/ball.gd" id="1_7s4qf"]
+[ext_resource type="AudioStream" uid="uid://dywurawmfdbwn" path="res://assets/beep1.wav" id="2_f7cbr"]
+[ext_resource type="AudioStream" uid="uid://dkjq7pd654l6" path="res://assets/beep2.wav" id="3_4dx81"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_ymh6p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pdaqp"]
+
+[node name="Ball" type="CharacterBody2D" unique_id=308165637 groups=["balls"]]
+script = ExtResource("1_7s4qf")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=723005604]
+scale = Vector2(20, 20)
+mesh = SubResource("QuadMesh_ymh6p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2101206951]
+shape = SubResource("RectangleShape2D_pdaqp")
+
+[node name="Beep1" type="AudioStreamPlayer2D" parent="." unique_id=2131807472]
+stream = ExtResource("2_f7cbr")
+volume_db = -10.0
+
+[node name="Beep2" type="AudioStreamPlayer2D" parent="." unique_id=8812113]
+stream = ExtResource("3_4dx81")
+volume_db = -10.0

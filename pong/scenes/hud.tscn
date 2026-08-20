@@ -1,0 +1,232 @@
+[gd_scene format=3 uid="uid://bmed41fkbopnt"]
+
+[ext_resource type="Script" uid="uid://t8ntks8jeiy8" path="res://scripts/hud.gd" id="1_ahhtf"]
+[ext_resource type="FontFile" uid="uid://dr2ck5m6yejer" path="res://fonts/PressStart2P-Regular.ttf" id="2_oo0fn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ymh6p"]
+font_size = 76
+
+[sub_resource type="LabelSettings" id="LabelSettings_5ysmq"]
+font = ExtResource("2_oo0fn")
+font_size = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ymh6p"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oo0fn"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+
+[node name="HUD" type="Control" unique_id=1623025786]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ahhtf")
+
+[node name="LeftScore" type="Label" parent="." unique_id=1113702228]
+layout_mode = 0
+offset_left = 150.0
+offset_right = 454.0
+offset_bottom = 222.0
+theme_override_fonts/font = ExtResource("2_oo0fn")
+text = "0"
+label_settings = SubResource("LabelSettings_ymh6p")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RightScore" type="Label" parent="." unique_id=239882285]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -454.0
+offset_right = -150.0
+offset_bottom = 222.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("2_oo0fn")
+text = "0"
+label_settings = SubResource("LabelSettings_ymh6p")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainScreen" type="Node" parent="." unique_id=1702961697]
+
+[node name="Screen" type="ColorRect" parent="MainScreen" unique_id=2094105216]
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 1)
+
+[node name="Title" type="Label" parent="MainScreen" unique_id=27755108]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 100.0
+offset_right = 200.0
+offset_bottom = 200.0
+grow_horizontal = 2
+text = "PONG"
+label_settings = SubResource("LabelSettings_5ysmq")
+
+[node name="Player1" type="Button" parent="MainScreen" unique_id=1008756345]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -164.0
+offset_top = 369.0
+offset_right = 164.0
+offset_bottom = 417.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.1458678, 0.1458678, 0.14586827, 1)
+theme_override_fonts/font = ExtResource("2_oo0fn")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_ymh6p")
+theme_override_styles/hover = SubResource("StyleBoxFlat_oo0fn")
+text = "1 PLAYER"
+
+[node name="Player2" type="Button" parent="MainScreen" unique_id=1380094929]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -164.0
+offset_top = 486.0
+offset_right = 164.0
+offset_bottom = 534.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.1458678, 0.1458678, 0.14586827, 1)
+theme_override_fonts/font = ExtResource("2_oo0fn")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_ymh6p")
+theme_override_styles/hover = SubResource("StyleBoxFlat_oo0fn")
+text = "2 PLAYER"
+
+[node name="Difficulty" type="Node" parent="MainScreen" unique_id=96866719]
+
+[node name="Easy" type="Button" parent="MainScreen/Difficulty" unique_id=2122810688]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -164.0
+offset_top = 252.0
+offset_right = 164.0
+offset_bottom = 300.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.1458678, 0.1458678, 0.14586827, 1)
+theme_override_fonts/font = ExtResource("2_oo0fn")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_ymh6p")
+theme_override_styles/hover = SubResource("StyleBoxFlat_oo0fn")
+text = "EASY"
+
+[node name="Normal" type="Button" parent="MainScreen/Difficulty" unique_id=2026762501]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -164.0
+offset_top = 369.0
+offset_right = 164.0
+offset_bottom = 417.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.1458678, 0.1458678, 0.14586827, 1)
+theme_override_fonts/font = ExtResource("2_oo0fn")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_ymh6p")
+theme_override_styles/hover = SubResource("StyleBoxFlat_oo0fn")
+text = "NORMAL"
+
+[node name="Hard" type="Button" parent="MainScreen/Difficulty" unique_id=463077860]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -164.0
+offset_top = 486.0
+offset_right = 164.0
+offset_bottom = 534.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.1458678, 0.1458678, 0.14586827, 1)
+theme_override_fonts/font = ExtResource("2_oo0fn")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_ymh6p")
+theme_override_styles/hover = SubResource("StyleBoxFlat_oo0fn")
+text = "HARD"
+
+[node name="EndScreen" type="Node" parent="." unique_id=728193508]
+
+[node name="LeftWin" type="Label" parent="EndScreen" unique_id=1902815582]
+visible = false
+offset_left = 150.0
+offset_top = 165.0
+offset_right = 454.0
+offset_bottom = 387.0
+theme_override_fonts/font = ExtResource("2_oo0fn")
+text = "WIN"
+label_settings = SubResource("LabelSettings_ymh6p")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Restart" type="Button" parent="EndScreen" unique_id=598593756]
+visible = false
+offset_left = 138.0
+offset_top = 365.0
+offset_right = 466.0
+offset_bottom = 413.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.1458678, 0.1458678, 0.14586827, 1)
+theme_override_fonts/font = ExtResource("2_oo0fn")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_ymh6p")
+theme_override_styles/hover = SubResource("StyleBoxFlat_oo0fn")
+text = "RESTART"
+
+[node name="Home" type="Button" parent="EndScreen" unique_id=1056305519]
+visible = false
+offset_left = 138.0
+offset_top = 455.0
+offset_right = 466.0
+offset_bottom = 503.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.1458678, 0.1458678, 0.14586827, 1)
+theme_override_fonts/font = ExtResource("2_oo0fn")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_ymh6p")
+theme_override_styles/hover = SubResource("StyleBoxFlat_oo0fn")
+text = "HOME"
+
+[connection signal="pressed" from="MainScreen/Player1" to="." method="_on_player_1_pressed"]
+[connection signal="pressed" from="MainScreen/Player2" to="." method="_on_player_2_pressed"]

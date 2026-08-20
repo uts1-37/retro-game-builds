@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dw1bevl5wjuyu"]
+
+[ext_resource type="Script" uid="uid://cx6cxue3beyfi" path="res://scripts/detector.gd" id="1_edrlx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ymh6p"]
+size = Vector2(20, 720)
+
+[node name="Detector" type="Area2D" unique_id=1376831131]
+script = ExtResource("1_edrlx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1408323176]
+shape = SubResource("RectangleShape2D_ymh6p")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
