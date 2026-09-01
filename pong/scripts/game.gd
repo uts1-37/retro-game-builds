@@ -14,7 +14,7 @@ var game_area_size = Vector2(1280, 720)
 
 
 var score = Vector2i.ZERO
-@export var final_score = 1
+@export var final_score = 10
 @onready var hud: Control = $CanvasLayer/HUD
 
 @onready var l2d: Line2D = $THEball/BallMovementLine2D

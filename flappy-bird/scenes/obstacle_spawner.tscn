@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bgr36slmocnpb"]
+
+[ext_resource type="Script" uid="uid://bttspop0odbgm" path="res://scripts/obstacle_spawner.gd" id="1_vyba0"]
+
+[node name="ObstacleSpawner" type="Node2D" unique_id=553939184]
+script = ExtResource("1_vyba0")
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=1804225184]
+wait_time = 1.5
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

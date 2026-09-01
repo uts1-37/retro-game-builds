@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://disc1xer5wdd3"]
+
+[ext_resource type="Script" uid="uid://dgkpv6ae7w43s" path="res://scripts/game.gd" id="1_iywne"]
+[ext_resource type="PackedScene" uid="uid://b4yqt20fg36v4" path="res://scenes/paddle.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://b5mv0x6p2m6os" path="res://scenes/wall_side.tscn" id="2_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://x6ak20v7oplm" path="res://scenes/wall_up.tscn" id="3_iywne"]
+[ext_resource type="PackedScene" uid="uid://bwthlo64pi2gx" path="res://scenes/ball.tscn" id="4_p57ef"]
+[ext_resource type="PackedScene" uid="uid://b8rt82blgjpu1" path="res://scenes/brick_manager.tscn" id="6_p57ef"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_ymh6p"]
+size = Vector2(640, 800)
+
+[node name="Game" type="Node2D" unique_id=2047577283]
+script = ExtResource("1_iywne")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=896008165]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(320, 400)
+mesh = SubResource("QuadMesh_ymh6p")
+
+[node name="Paddle" parent="." unique_id=715582683 instance=ExtResource("1_uwrxv")]
+position = Vector2(320, 720)
+
+[node name="WallLeft" parent="." unique_id=2133433331 instance=ExtResource("2_lbhrr")]
+position = Vector2(-10, 400)
+
+[node name="WallRight" parent="." unique_id=927124062 instance=ExtResource("2_lbhrr")]
+position = Vector2(650, 400)
+
+[node name="Wall_Up" parent="." unique_id=205017584 instance=ExtResource("3_iywne")]
+position = Vector2(320, -10)
+
+[node name="Ball" parent="." unique_id=1569208978 instance=ExtResource("4_p57ef")]
+position = Vector2(320, 569)
+
+[node name="BrickManager" parent="." unique_id=1972848133 instance=ExtResource("6_p57ef")]

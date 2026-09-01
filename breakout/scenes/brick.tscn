@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://be6m7brci0ic2"]
+
+[ext_resource type="Script" uid="uid://bvwaa5t68us7x" path="res://scripts/brick.gd" id="1_5l4w1"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_pdaqp"]
+size = Vector2(42, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ymh6p"]
+size = Vector2(42, 20)
+
+[node name="Brick" type="Area2D" unique_id=1624515992]
+script = ExtResource("1_5l4w1")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=517674433]
+mesh = SubResource("QuadMesh_pdaqp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1864079348]
+shape = SubResource("RectangleShape2D_ymh6p")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

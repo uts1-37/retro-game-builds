@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://h2pgyrqw1c8t"]
+
+[ext_resource type="Texture2D" uid="uid://d2kuowgjj3job" path="res://assets/ball_8_white_outline.png" id="1_ahhtf"]
+
+[node name="HUD" type="CanvasLayer" unique_id=1662551250]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1484792731]
+offset_right = 640.0
+offset_bottom = 800.0
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1645741150]
+texture_filter = 1
+position = Vector2(31, 30)
+scale = Vector2(2, 2)
+texture = ExtResource("1_ahhtf")

@@ -1,0 +1,133 @@
+[gd_scene format=3 uid="uid://dn7ri5h1uu4ta"]
+
+[ext_resource type="Script" uid="uid://cvf387qex0l8o" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://cvn6dooosputh" path="res://assets/textures/bird.png" id="2_qhqgy"]
+[ext_resource type="AudioStream" uid="uid://doytdh7vj8la7" path="res://assets/audio/wing.wav" id="3_qhqgy"]
+[ext_resource type="AudioStream" uid="uid://csuxxapobh12j" path="res://assets/audio/hit.wav" id="4_qlg0r"]
+[ext_resource type="AudioStream" uid="uid://dof0sptubab56" path="res://assets/audio/point.wav" id="5_tuyoq"]
+
+[sub_resource type="Animation" id="Animation_dqkch"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -5)]
+}
+
+[sub_resource type="Animation" id="Animation_qlg0r"]
+resource_name = "flap"
+length = 0.39999999999999997
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [2, 1, 0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_tuyoq"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.70000005),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 1, 0, 1, 2, 1, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -5), Vector2(0, 5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fjrip"]
+_data = {
+&"RESET": SubResource("Animation_dqkch"),
+&"flap": SubResource("Animation_qlg0r"),
+&"idle": SubResource("Animation_tuyoq")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ymh6p"]
+radius = 19.0
+
+[node name="Player" type="RigidBody2D" unique_id=1473985490]
+gravity_scale = 0.0
+script = ExtResource("1_g2els")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=724097222]
+position = Vector2(0, -5)
+texture = ExtResource("2_qhqgy")
+hframes = 3
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1024436028]
+root_node = NodePath("../Sprite2D")
+libraries/ = SubResource("AnimationLibrary_fjrip")
+autoplay = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1441689489]
+shape = SubResource("CircleShape2D_ymh6p")
+
+[node name="FlapSound" type="AudioStreamPlayer" parent="." unique_id=1560724559]
+stream = ExtResource("3_qhqgy")
+volume_db = -8.0
+
+[node name="HitSound" type="AudioStreamPlayer" parent="." unique_id=214239194]
+stream = ExtResource("4_qlg0r")
+volume_db = -13.0
+
+[node name="ScoreSound" type="AudioStreamPlayer" parent="." unique_id=579823443]
+stream = ExtResource("5_tuyoq")
+volume_db = -7.0

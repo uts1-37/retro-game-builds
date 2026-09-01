@@ -14,10 +14,6 @@ func _ready():
 	$MainScreen/Difficulty/Hard.pressed.connect(_choosed_difficulty.bind(2))
 	$EndScreen/Restart.pressed.connect(pressed_restart)
 	$EndScreen/Home.pressed.connect(pressed_home)
-	_on_player_1_pressed()
-	choose_difficulty_screen_show()
-	_choosed_difficulty(0)
-	show_game_over(0)
 
 func set_new_score(score):
 	left_score.text = str(score.x)
@@ -71,13 +67,13 @@ func show_game_over(side):
 		$EndScreen/Restart.show()
 		$EndScreen/Home.show()
 		
-	for i in range(3):
-		$EndScreen/LeftWin.modulate = Color.YELLOW
-		await get_tree().create_timer(0.2).timeout
-		$EndScreen/LeftWin.modulate = Color.RED
-		await get_tree().create_timer(0.2).timeout
-		$EndScreen/LeftWin.modulate = Color.WHITE   
-		await get_tree().create_timer(0.2).timeout
+	#for i in range(3):
+		#$EndScreen/LeftWin.modulate = Color.YELLOW
+		#await get_tree().create_timer(0.2).timeout
+		#$EndScreen/LeftWin.modulate = Color.RED
+		#await get_tree().create_timer(0.2).timeout
+		#$EndScreen/LeftWin.modulate = Color.WHITE   
+		#await get_tree().create_timer(0.2).timeout
 
 	
 

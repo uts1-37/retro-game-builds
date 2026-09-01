@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://btyfpf1mvrwkt"]
+
+[ext_resource type="Script" uid="uid://cy8u2uhvbagsl" path="res://scripts/obstacle.gd" id="1_drdry"]
+[ext_resource type="Texture2D" uid="uid://ck64bprjbrwwo" path="res://assets/textures/pipe.png" id="2_cjuko"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ymh6p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pdaqp"]
+size = Vector2(71, 1215)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2j4kc"]
+size = Vector2(70, 480)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6lips"]
+size = Vector2(20, 120)
+
+[node name="Obstacle" type="CharacterBody2D" unique_id=454737454 groups=["obstacles"]]
+script = ExtResource("1_drdry")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1522973112]
+shape = SubResource("RectangleShape2D_ymh6p")
+disabled = true
+
+[node name="PipeTop" type="Area2D" parent="." unique_id=1134346236]
+position = Vector2(0, -300)
+
+[node name="Sprite2D" type="Sprite2D" parent="PipeTop" unique_id=1110629673]
+texture = ExtResource("2_cjuko")
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PipeTop" unique_id=1120748405]
+position = Vector2(0.5, -370.5)
+shape = SubResource("RectangleShape2D_pdaqp")
+
+[node name="PipeBottom" type="Area2D" parent="." unique_id=237193098]
+position = Vector2(0, 300)
+
+[node name="Sprite2D" type="Sprite2D" parent="PipeBottom" unique_id=1411281235]
+texture = ExtResource("2_cjuko")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PipeBottom" unique_id=402433094]
+shape = SubResource("RectangleShape2D_2j4kc")
+
+[node name="ScoreArea" type="Area2D" parent="." unique_id=233197236]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreArea" unique_id=1362580203]
+position = Vector2(47, 0)
+shape = SubResource("RectangleShape2D_6lips")
+
+[connection signal="body_entered" from="PipeTop" to="." method="_on_pipe_body_entered"]
+[connection signal="body_entered" from="PipeBottom" to="." method="_on_pipe_body_entered"]
+[connection signal="body_entered" from="ScoreArea" to="." method="_on_score_area_body_entered"]
