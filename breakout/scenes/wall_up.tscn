@@ -1,9 +1,24 @@
 [gd_scene format=3 uid="uid://x6ak20v7oplm"]
 
+[ext_resource type="Script" uid="uid://beimn8yjrn2mi" path="res://scenes/wall_up.gd" id="1_yay52"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ymh6p"]
 size = Vector2(640, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pdaqp"]
+size = Vector2(640, 10)
+
 [node name="Wall_Up" type="StaticBody2D" unique_id=205017584]
+script = ExtResource("1_yay52")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=73368344]
 shape = SubResource("RectangleShape2D_ymh6p")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1174907136]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1258216176]
+position = Vector2(0, 5.1)
+shape = SubResource("RectangleShape2D_pdaqp")
+debug_color = Color(0.9280531, 3.648311e-05, 0.6681318, 0.41960785)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -6,12 +6,17 @@
 [ext_resource type="PackedScene" uid="uid://x6ak20v7oplm" path="res://scenes/wall_up.tscn" id="3_iywne"]
 [ext_resource type="PackedScene" uid="uid://bwthlo64pi2gx" path="res://scenes/ball.tscn" id="4_p57ef"]
 [ext_resource type="PackedScene" uid="uid://b8rt82blgjpu1" path="res://scenes/brick_manager.tscn" id="6_p57ef"]
+[ext_resource type="PackedScene" uid="uid://tgrji5pcdyja" path="res://scenes/detector.tscn" id="7_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://h2pgyrqw1c8t" path="res://scenes/hud.tscn" id="8_gee14"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_ymh6p"]
 size = Vector2(640, 800)
 
-[node name="Game" type="Node2D" unique_id=2047577283]
+[node name="Game" type="Node2D" unique_id=2047577283 node_paths=PackedStringArray("paddle")]
 script = ExtResource("1_iywne")
+paddle = NodePath("Paddle")
+
+[node name="HUD" parent="." unique_id=1662551250 instance=ExtResource("8_gee14")]
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=896008165]
 modulate = Color(0, 0, 0, 1)
@@ -30,7 +35,15 @@ position = Vector2(650, 400)
 [node name="Wall_Up" parent="." unique_id=205017584 instance=ExtResource("3_iywne")]
 position = Vector2(320, -10)
 
+[node name="Detector" parent="." unique_id=1245045851 instance=ExtResource("7_u5sy4")]
+position = Vector2(320, 810)
+
 [node name="Ball" parent="." unique_id=1569208978 instance=ExtResource("4_p57ef")]
-position = Vector2(320, 569)
+position = Vector2(320, 707)
 
 [node name="BrickManager" parent="." unique_id=1972848133 instance=ExtResource("6_p57ef")]
+
+[connection signal="ceiling_touched" from="Wall_Up" to="." method="_on_wall_up_ceiling_touched"]
+[connection signal="out" from="Detector" to="." method="_on_detector_out"]
+[connection signal="cleared" from="BrickManager" to="." method="_on_brick_manager_cleared"]
+[connection signal="score_changed" from="BrickManager" to="." method="_on_brick_manager_score_changed"]

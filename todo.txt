@@ -1,12 +1,8 @@
 2. 벽돌 level 코드
-3. Main 화면
-4. Score
-
 
 만들어야할 게임
 
 Breakout
-Floppy bird
 Packman
 Ticktack toe
 Asteroids 

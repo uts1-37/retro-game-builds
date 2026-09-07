@@ -1,16 +1,106 @@
 [gd_scene format=3 uid="uid://h2pgyrqw1c8t"]
 
+[ext_resource type="Script" uid="uid://1n6elrkxffku" path="res://scripts/hud.gd" id="1_5ysmq"]
 [ext_resource type="Texture2D" uid="uid://d2kuowgjj3job" path="res://assets/ball_8_white_outline.png" id="1_ahhtf"]
+[ext_resource type="Texture2D" uid="uid://dnwhu84re01dt" path="res://assets/ball_8.png" id="2_oo0fn"]
+[ext_resource type="FontFile" uid="uid://b33sjinmapbjn" path="res://assets/Press_Start_2P/PressStart2P-Regular.ttf" id="4_6fi6k"]
+[ext_resource type="PackedScene" uid="uid://bed2wjph2v8mh" path="res://scenes/game_over_screen.tscn" id="5_uo2fv"]
+[ext_resource type="Texture2D" uid="uid://bl5tc1dtua6ce" path="res://assets/keys_move.png" id="6_047uy"]
+[ext_resource type="Texture2D" uid="uid://cynd16godt2r7" path="res://assets/keys_launch.png" id="7_5pdws"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ymh6p"]
+font = ExtResource("4_6fi6k")
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_pdaqp"]
+font = ExtResource("4_6fi6k")
+font_size = 40
 
 [node name="HUD" type="CanvasLayer" unique_id=1662551250]
+script = ExtResource("1_5ysmq")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1484792731]
-offset_right = 640.0
-offset_bottom = 800.0
-color = Color(0, 0, 0, 1)
+[node name="Life" type="Node" parent="." unique_id=1037974458]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1645741150]
+[node name="Life1Off" type="Sprite2D" parent="Life" unique_id=1645741150]
+visible = false
 texture_filter = 1
 position = Vector2(31, 30)
 scale = Vector2(2, 2)
 texture = ExtResource("1_ahhtf")
+metadata/_edit_lock_ = true
+
+[node name="Life1On" type="Sprite2D" parent="Life" unique_id=2055871055]
+position = Vector2(31, 30)
+scale = Vector2(2, 2)
+texture = ExtResource("2_oo0fn")
+metadata/_edit_lock_ = true
+
+[node name="Life2Off" type="Sprite2D" parent="Life" unique_id=437520536]
+visible = false
+texture_filter = 1
+position = Vector2(57, 30)
+scale = Vector2(2, 2)
+texture = ExtResource("1_ahhtf")
+metadata/_edit_lock_ = true
+
+[node name="Life2On" type="Sprite2D" parent="Life" unique_id=910233596]
+position = Vector2(57, 30)
+scale = Vector2(2, 2)
+texture = ExtResource("2_oo0fn")
+metadata/_edit_lock_ = true
+
+[node name="Life3Off" type="Sprite2D" parent="Life" unique_id=1744256056]
+visible = false
+texture_filter = 1
+position = Vector2(83, 30)
+scale = Vector2(2, 2)
+texture = ExtResource("1_ahhtf")
+metadata/_edit_lock_ = true
+
+[node name="Life3On" type="Sprite2D" parent="Life" unique_id=962313498]
+position = Vector2(83, 30)
+scale = Vector2(2, 2)
+texture = ExtResource("2_oo0fn")
+metadata/_edit_lock_ = true
+
+[node name="ScoreLabel" type="Label" parent="." unique_id=720128924]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 10.0
+offset_bottom = 50.0
+grow_horizontal = 2
+text = "000000"
+label_settings = SubResource("LabelSettings_ymh6p")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOverScreen" parent="." unique_id=269874267 instance=ExtResource("5_uo2fv")]
+visible = false
+
+[node name="KeyMove" type="Sprite2D" parent="." unique_id=1047312651]
+position = Vector2(320, 472)
+scale = Vector2(2, 2)
+texture = ExtResource("6_047uy")
+
+[node name="KeyLaunch" type="Sprite2D" parent="." unique_id=1926361673]
+position = Vector2(320, 472)
+scale = Vector2(2, 2)
+texture = ExtResource("7_5pdws")
+
+[node name="ClearLabel" type="Label" parent="." unique_id=613076349]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -20.0
+offset_right = 120.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "CLEAR!"
+label_settings = SubResource("LabelSettings_pdaqp")
+horizontal_alignment = 1
+vertical_alignment = 1
